@@ -36,28 +36,32 @@ const buildOptions = [{
     input: resolve(SOURCE_ENTRY_FILE),
     format: 'umd',
     output: {
-        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.js'),       
+        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.js'),
+        format: 'umd',
     },
-    name: 'ejs',
+    name: 'hello',
     plugins: [
         babel({
-            exclude: 'node_modules/**' // only transpile our source code
+            // only transpile our source code
+            exclude: 'node_modules/**',
         })
     ],
-    banner
+    banner,
 }, {
     input: resolve(SOURCE_ENTRY_FILE),
     format: 'umd',
     output: {
-        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.min.js'),    
+        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.min.js'),
+        format: 'umd',
     },
-    name: 'ejs',
+    name: 'hello',
     plugins: [
         babel({
-        exclude: 'node_modules/**' // only transpile our source code
+            // only transpile our source code
+            exclude: 'node_modules/**',
         })
     ],
-    banner
+    banner,
 }];
 
 module.exports.buildOptions = buildOptions;

@@ -35,3 +35,29 @@ babel-preset-stage-3
 
 一般用2，不建议直接使用  async和await
 ```
+
+如果rollup和webpack同时的时候，建议rollup用配置文件，webpack（常用于单测）的额外配置可以写入代码中
+
+```js
+"plugins": [
+    "external-helpers"
+  ]
+```
+
+
+如果rollup的watch无法生效，可能有以下表现
+
+- watch监听只有`START`，没有`END`，且无法自动build
+
+- watch监听了一个数组，但是只有第一个自动监听配置生效
+
+这些报错的原因是rollup内部的watch报错，一般是
+
+```js
+fortmat或者
+output: {
+    format
+}
+没有填写对应的值
+注意，output需要这个format，否则无法自动watch（可能这时候仍然可以build）
+```

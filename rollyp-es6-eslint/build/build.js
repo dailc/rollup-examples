@@ -28,6 +28,7 @@ const banner = ['/*!',
     ''
 ].join('\n').replace(/<%=\s([^%]+)\s%>/g, ($0, $1) => {
     // easy to read
+    console.log($1);
     return $1 === 'date' ? new Date().getFullYear() : (pkg[$1.split('.')[1]] || '');
 });
 
@@ -36,38 +37,38 @@ const buildOptions = [{
     input: resolve(SOURCE_ENTRY_FILE),
     format: 'umd',
     output: {
-        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.js'),       
+        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.js'),
+        format: 'umd',
     },
-    name: 'ejs',
+    name: 'hello',
     plugins: [
         // 请先使用eslint，因为要在为编译前检测
         eslint({
-          include: [
-            'src/**',
-          ],
-          exclude: [
-            'dist/**',
-            'node_modules/**'
-          ]
+            exclude: [
+                'node_modules/**'
+            ]
         }),
         babel({
-            exclude: 'node_modules/**' // only transpile our source code
+            // only transpile our source code
+            exclude: 'node_modules/**',
         })
-    ], 
-    banner
+    ],
+    banner,
 }, {
     input: resolve(SOURCE_ENTRY_FILE),
     format: 'umd',
     output: {
-        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.min.js'),    
+        file: resolve(RELEASE_ROOT_PATH + '/' + RELEASE_FILE_NAME + '.min.js'),
+        format: 'umd',
     },
-    name: 'ejs',
+    name: 'hello',
     plugins: [
         babel({
-        exclude: 'node_modules/**' // only transpile our source code
+            // only transpile our source code
+            exclude: 'node_modules/**',
         })
     ],
-    banner
+    banner,
 }];
 
 module.exports.buildOptions = buildOptions;

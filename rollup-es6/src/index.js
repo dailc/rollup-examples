@@ -1,10 +1,10 @@
-import {warn} from './util/debug'
+import { warn } from './util/debug';
 
 let ejs = {};
 
-warn('init ejs')
-//
-ejs.Version = '3.0.0'
+warn('init ejs');
 
-export default ejs
+ejs.Version = '3.0.0';
+
+export default ejs;
 

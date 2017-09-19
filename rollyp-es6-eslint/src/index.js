@@ -1,4 +1,4 @@
-import warn from './util/debug';
+import { warn } from './util/debug';
 
 const ejs = {};
 

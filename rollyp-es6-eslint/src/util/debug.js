@@ -1,4 +1,8 @@
-export default function warn(msg) {
+export function warn(msg) {
     // 模板字符串
-    console.error(`[BScroll warn]: ${msg}`);
+    console.error(`[quick error]: ${msg}`);
+}
+
+export function log(msg) {
+    console.log(`[quick log]: ${msg}`);
 }

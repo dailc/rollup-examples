@@ -5,14 +5,16 @@ export const requestAnimationFrame = (() => window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.oRequestAnimationFrame ||
         // if all else fails, use setTimeout
-        function (callback) {
-            return window.setTimeout(callback, (callback.interval || DEFAULT_INTERVAL) / 2); // make interval as precise as possible.
+        function frame(callback) {
+            // make interval as precise as possible.
+            return window.setTimeout(callback,
+                (callback.interval || DEFAULT_INTERVAL) / 2);
         })();
 
 export const cancelAnimationFrame = (() => window.cancelAnimationFrame ||
         window.webkitCancelAnimationFrame ||
         window.mozCancelAnimationFrame ||
         window.oCancelAnimationFrame ||
-        function (id) {
+        function frame(id) {
             window.clearTimeout(id);
         })();
